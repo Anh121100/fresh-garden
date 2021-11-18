@@ -1,0 +1,72 @@
+RewriteEngine On
+
+#----------
+#client
+
+#home
+RewriteRule ^home$ /index.php [L]
+
+#about
+RewriteRule ^about$ index.php?controller=About
+
+#checkout
+RewriteRule ^checkout$ index.php?controller=Checkout
+
+#order-success
+RewriteRule ^order-success$ index.php?controller=OrderSuccess
+
+#product
+RewriteRule ^product/([0-9]+) index.php?controller=ProductDetail&id=$1
+
+#category-product
+RewriteRule ^category-product/([0-9]+)(/)?([0-9]*)$ index.php?controller=CategoryProduct&id=$1&page=$3
+
+#cart
+RewriteRule ^cart$ index.php?controller=Cart
+RewriteRule ^cart/add index.php?controller=Cart&action=add
+RewriteRule ^cart/destroy index.php?controller=Cart&action=destroy
+RewriteRule ^cart/delete/([0-9]+) index.php?controller=Cart&action=delete&id=$1
+
+#----------
+#auth
+
+#logout
+RewriteRule ^admin/logout$ admin.php?controller=Logout&type=auth
+
+#sign in
+RewriteRule ^sign-in$ admin.php?controller=SignIn&type=auth
+
+#sign up
+RewriteRule ^sign-up$ admin.php?controller=SignUp&type=auth
+
+#----------
+#admin
+
+RewriteRule ^admin$ admin.php
+
+#banner
+RewriteRule ^admin/banners/([0-9]+)$ admin.php?controller=Banner&page=$1
+RewriteRule ^admin/banner/create$ admin.php?controller=Banner&action=create
+RewriteRule ^admin/banner/do_create$ admin.php?controller=Banner&action=do_create
+RewriteRule ^admin/banner/edit/([0-9]+)$ admin.php?controller=Banner&action=show&id=$1
+RewriteRule ^admin/banner/update/([0-9]+)$ admin.php?controller=Banner&action=update&id=$1
+RewriteRule ^admin/banner/delete/([0-9]+)$ admin.php?controller=Banner&action=delete&id=$1
+
+#category-product 
+RewriteRule ^admin/categories-product/([0-9]+)$ admin.php?controller=CategoryProduct&page=$1
+RewriteRule ^admin/category-product/create$ admin.php?controller=CategoryProduct&action=create
+RewriteRule ^admin/category-product/do_create$ admin.php?controller=CategoryProduct&action=do_create
+RewriteRule ^admin/category-product/edit/([0-9]+)$ admin.php?controller=CategoryProduct&action=show&id=$1
+RewriteRule ^admin/category-product/update/([0-9]+)$ admin.php?controller=CategoryProduct&action=update&id=$1
+RewriteRule ^admin/category-product/delete/([0-9]+)$ admin.php?controller=CategoryProduct&action=delete&id=$1
+
+#product
+RewriteRule ^admin/products/([0-9]+)$ admin.php?controller=Product&page=$1
+RewriteRule ^admin/product/create$ admin.php?controller=Product&action=create
+RewriteRule ^admin/product/do_create$ admin.php?controller=Product&action=do_create
+RewriteRule ^admin/product/edit/([0-9]+)$ admin.php?controller=Product&action=show&id=$1
+RewriteRule ^admin/product/update/([0-9]+)$ admin.php?controller=Product&action=update&id=$1
+RewriteRule ^admin/product/delete/([0-9]+)$ admin.php?controller=Product&action=delete&id=$1
+
+#404
+ErrorDocument 404 http://localhost/fresh-garden/
